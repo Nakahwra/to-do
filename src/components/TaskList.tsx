@@ -29,6 +29,13 @@ export function TaskList() {
 
   function handleToggleTaskCompletion(id: number) {
     // Altere entre `true` ou `false` o campo `isComplete` de uma task com dado ID
+    const updatedTasks = [...tasks];
+    const index = updatedTasks.findIndex(task => task.id === id);
+
+    if(!updatedTasks[index]) return;
+
+    updatedTasks[index].isComplete = !updatedTasks[index].isComplete
+    setTasks(updatedTasks);
   }
 
   function handleRemoveTask(id: number) {
